@@ -1,0 +1,34 @@
+# # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+# metadata:
+#     template: azd-init@1.11.1
+name: content-processing
+
+requiredVersions:
+  azd: '>= 1.18.0 != 1.23.9'
+
+metadata:
+  template: content-processing@1.0
+  name: content-processinge@1.0
+
+hooks:
+  preprovision:
+    windows:
+      run: |
+        Write-Host ""
+        Write-Host "  ---------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+        Write-Host "  Note: If deployment fails or you encounter an issue, please open an issue with the deployment logs." -ForegroundColor Yellow
+        Write-Host "  https://github.com/microsoft/content-processing-solution-accelerator/issues" -ForegroundColor Cyan
+        Write-Host "  ---------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+        Write-Host ""
+      shell: pwsh
+      interactive: true
+    posix:
+      run: |
+        printf '\n'
+        printf '\033[33m  ---------------------------------------------------------------------------------------------------\033[0m\n'
+        printf '\033[33m  Note: If deployment fails or you encounter an issue, please open an issue with the deployment logs.\033[0m\n'
+        printf '\033[36m  https://github.com/microsoft/content-processing-solution-accelerator/issues\033[0m\n'
+        printf '\033[33m  ---------------------------------------------------------------------------------------------------\033[0m\n'
+        printf '\n'
+      shell: sh
+      interactive: true
